@@ -1,0 +1,87 @@
+/* Global Airy Adventure Stylesheet */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Be+Vietnam+Pro:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap');
+
+:root {
+  --bg-color: #faf9f6;
+  --primary-color: #1c60a3;
+  --secondary-color: #645e53;
+  --on-surface: #1a1c1a;
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-blur: 12px;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--on-surface);
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Glassmorphism Styles */
+.glass-header, .glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+/* Custom shadow effects */
+.ambient-shadow {
+  box-shadow: 0 20px 40px rgba(126, 182, 255, 0.15);
+}
+
+.card-shadow {
+  box-shadow: 0 10px 30px rgba(126, 182, 255, 0.1);
+}
+
+.card-shadow-hover:hover {
+  box-shadow: 0 20px 40px rgba(126, 182, 255, 0.15);
+}
+
+/* Material Symbols Variable settings */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+/* Custom Calendar Grid layout */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar-day {
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 9999px;
+}
+
+.calendar-day.in-range {
+  background-color: rgba(126, 182, 255, 0.15);
+  border-radius: 0;
+}
+
+.calendar-day.range-start {
+  border-top-left-radius: 9999px;
+  border-bottom-left-radius: 9999px;
+}
+
+.calendar-day.range-end {
+  border-top-right-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+}
+
+/* Safe areas */
+.safe-pb {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}

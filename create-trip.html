@@ -1,0 +1,717 @@
+<!-- Create Trip -->
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Plan Your Trip - Airy Adventure</title>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "background": "#faf9f6",
+                    "tertiary-fixed-dim": "#b7c9d5",
+                    "surface-variant": "#e3e2e0",
+                    "surface-dim": "#dbdad7",
+                    "on-background": "#1a1c1a",
+                    "primary-fixed": "#d3e3ff",
+                    "on-tertiary-fixed": "#0c1e26",
+                    "error": "#ba1a1a",
+                    "on-error-container": "#93000a",
+                    "inverse-on-surface": "#f2f1ee",
+                    "primary-fixed-dim": "#a3c9ff",
+                    "on-error": "#ffffff",
+                    "on-primary-fixed-variant": "#004882",
+                    "surface-container": "#efeeeb",
+                    "secondary": "#645e53",
+                    "on-secondary-fixed-variant": "#4c463c",
+                    "inverse-primary": "#a3c9ff",
+                    "primary": "#1c60a3",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-low": "#f4f3f1",
+                    "surface": "#faf9f6",
+                    "on-primary-container": "#004680",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed-dim": "#cec5b8",
+                    "tertiary": "#50616b",
+                    "inverse-surface": "#2f312f",
+                    "on-surface": "#1a1c1a",
+                    "outline": "#727782",
+                    "outline-variant": "#c2c7d2",
+                    "on-tertiary-container": "#374851",
+                    "on-secondary-fixed": "#1f1b13",
+                    "secondary-fixed": "#ebe1d3",
+                    "on-secondary-container": "#6a6459",
+                    "tertiary-fixed": "#d3e5f1",
+                    "error-container": "#ffdad6",
+                    "secondary-container": "#ebe1d3",
+                    "on-secondary": "#ffffff",
+                    "tertiary-container": "#a4b6c1",
+                    "surface-container-high": "#e9e8e5",
+                    "on-tertiary-fixed-variant": "#384953",
+                    "surface-container-highest": "#e3e2e0",
+                    "surface-bright": "#faf9f6",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#424750",
+                    "on-primary-fixed": "#001c39",
+                    "surface-tint": "#1c60a3",
+                    "primary-container": "#7eb6ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "32px",
+                    "gutter": "16px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "section-gap": "48px",
+                    "container-padding-desktop": "64px",
+                    "unit": "8px",
+                    "container-padding-mobile": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "label-md": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+    <link href="assets/css/global.css" rel="stylesheet"/>
+</head>
+<body class="bg-background text-on-background min-h-screen font-body-md flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop py-4 max-w-full shadow-[0_20px_40px_rgba(126,182,255,0.15)]">
+<div class="flex items-center gap-4">
+<button onclick="goBack()" class="active:scale-95 transition-transform duration-200 text-primary">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<a href="index.html" class="font-headline-md text-headline-md tracking-wider text-primary">AIRY</a>
+</div>
+<button onclick="location.href='profile.html'" class="active:scale-95 transition-transform duration-200 text-primary">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</header>
+<main class="flex-grow pt-24 pb-32 px-container-padding-mobile md:px-container-padding-desktop max-w-4xl mx-auto w-full">
+<!-- Progress Stepper -->
+<div class="mb-stack-lg flex items-center gap-2">
+<div id="step-indicator-1" class="h-1.5 flex-grow bg-primary rounded-full transition-all duration-300"></div>
+<div id="step-indicator-2" class="h-1.5 flex-grow bg-surface-container-highest rounded-full transition-all duration-300"></div>
+<div id="step-indicator-3" class="h-1.5 flex-grow bg-surface-container-highest rounded-full transition-all duration-300"></div>
+<div id="step-indicator-4" class="h-1.5 flex-grow bg-surface-container-highest rounded-full transition-all duration-300"></div>
+<span id="step-badge" class="font-label-sm text-label-sm text-primary ml-2 whitespace-nowrap">STEP 1 OF 4</span>
+</div>
+
+<!-- STEP 1: Destination Selection -->
+<section id="step-1" class="step-container transition-all duration-300">
+<div class="mb-8">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-stack-sm text-on-surface">Where do you want to go?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Search or select from our curated wanderlust destinations.</p>
+</div>
+<!-- Search Input -->
+<div class="relative mb-8">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input id="destination-input" type="text" placeholder="Type a destination (e.g. Kyoto, Amalfi...)" class="w-full pl-12 pr-4 py-4 rounded-xl border border-outline-variant focus:outline-none focus:border-primary bg-white shadow-[0_10px_30px_rgba(126,182,255,0.05)] text-body-lg" />
+</div>
+<!-- Quick Select Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+<button onclick="selectDestination('Amalfi Coast, Italy')" class="destination-chip p-4 rounded-2xl border border-surface-variant bg-white hover:border-primary active:scale-95 transition-all text-left flex flex-col justify-between h-32 group">
+    <span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">beach_access</span>
+    <div>
+        <h4 class="font-semibold text-on-surface">Amalfi Coast</h4>
+        <span class="text-xs text-on-surface-variant">Italy</span>
+    </div>
+</button>
+<button onclick="selectDestination('Swiss Alps, Switzerland')" class="destination-chip p-4 rounded-2xl border border-surface-variant bg-white hover:border-primary active:scale-95 transition-all text-left flex flex-col justify-between h-32 group">
+    <span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">filter_hdr</span>
+    <div>
+        <h4 class="font-semibold text-on-surface">Swiss Alps</h4>
+        <span class="text-xs text-on-surface-variant">Switzerland</span>
+    </div>
+</button>
+<button onclick="selectDestination('Kyoto, Japan')" class="destination-chip p-4 rounded-2xl border border-surface-variant bg-white hover:border-primary active:scale-95 transition-all text-left flex flex-col justify-between h-32 group">
+    <span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">spa</span>
+    <div>
+        <h4 class="font-semibold text-on-surface">Kyoto</h4>
+        <span class="text-xs text-on-surface-variant">Japan</span>
+    </div>
+</button>
+<button onclick="selectDestination('Santorini, Greece')" class="destination-chip p-4 rounded-2xl border border-surface-variant bg-white hover:border-primary active:scale-95 transition-all text-left flex flex-col justify-between h-32 group">
+    <span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">sailing</span>
+    <div>
+        <h4 class="font-semibold text-on-surface">Santorini</h4>
+        <span class="text-xs text-on-surface-variant">Greece</span>
+    </div>
+</button>
+<button onclick="selectDestination('Bali, Indonesia')" class="destination-chip p-4 rounded-2xl border border-surface-variant bg-white hover:border-primary active:scale-95 transition-all text-left flex flex-col justify-between h-32 group">
+    <span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">forest</span>
+    <div>
+        <h4 class="font-semibold text-on-surface">Bali</h4>
+        <span class="text-xs text-on-surface-variant">Indonesia</span>
+    </div>
+</button>
+<button onclick="selectDestination('Reykjavík, Iceland')" class="destination-chip p-4 rounded-2xl border border-surface-variant bg-white hover:border-primary active:scale-95 transition-all text-left flex flex-col justify-between h-32 group">
+    <span class="material-symbols-outlined text-primary text-3xl group-hover:scale-110 transition-transform">ac_unit</span>
+    <div>
+        <h4 class="font-semibold text-on-surface">Reykjavík</h4>
+        <span class="text-xs text-on-surface-variant">Iceland</span>
+    </div>
+</button>
+</div>
+</section>
+
+<!-- STEP 2: Travel Vibe -->
+<section id="step-2" class="step-container hidden transition-all duration-300">
+<div class="mb-8">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-stack-sm text-on-surface">What's your travel style?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Select the experiences that resonate with you (Choose multiple).</p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 gap-gutter mb-8">
+<button onclick="toggleVibe(this, 'Beach')" class="vibe-btn p-6 rounded-3xl border border-surface-variant bg-white flex flex-col items-center justify-center text-center gap-2 hover:border-primary active:scale-95 transition-all duration-200">
+    <span class="material-symbols-outlined text-primary text-4xl">beach_access</span>
+    <span class="font-semibold">Beach Escape</span>
+</button>
+<button onclick="toggleVibe(this, 'Hiking')" class="vibe-btn p-6 rounded-3xl border border-surface-variant bg-white flex flex-col items-center justify-center text-center gap-2 hover:border-primary active:scale-95 transition-all duration-200">
+    <span class="material-symbols-outlined text-primary text-4xl">hiking</span>
+    <span class="font-semibold">Mountain Adventure</span>
+</button>
+<button onclick="toggleVibe(this, 'City')" class="vibe-btn p-6 rounded-3xl border border-surface-variant bg-white flex flex-col items-center justify-center text-center gap-2 hover:border-primary active:scale-95 transition-all duration-200">
+    <span class="material-symbols-outlined text-primary text-4xl">apartment</span>
+    <span class="font-semibold">City Explorer</span>
+</button>
+<button onclick="toggleVibe(this, 'Wellness')" class="vibe-btn p-6 rounded-3xl border border-surface-variant bg-white flex flex-col items-center justify-center text-center gap-2 hover:border-primary active:scale-95 transition-all duration-200">
+    <span class="material-symbols-outlined text-primary text-4xl">spa</span>
+    <span class="font-semibold">Zen / Wellness</span>
+</button>
+<button onclick="toggleVibe(this, 'Cultural')" class="vibe-btn p-6 rounded-3xl border border-surface-variant bg-white flex flex-col items-center justify-center text-center gap-2 hover:border-primary active:scale-95 transition-all duration-200">
+    <span class="material-symbols-outlined text-primary text-4xl">account_balance</span>
+    <span class="font-semibold">Heritage / Culture</span>
+</button>
+<button onclick="toggleVibe(this, 'Foodie')" class="vibe-btn p-6 rounded-3xl border border-surface-variant bg-white flex flex-col items-center justify-center text-center gap-2 hover:border-primary active:scale-95 transition-all duration-200">
+    <span class="material-symbols-outlined text-primary text-4xl">restaurant</span>
+    <span class="font-semibold">Culinary Journey</span>
+</button>
+</div>
+</section>
+
+<!-- STEP 3: Dates and Duration Selection -->
+<section id="step-3" class="step-container hidden transition-all duration-300">
+<div class="mb-8">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-stack-sm text-on-surface">When are you going?</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Select dates on the calendar. We'll outline your journey range.</p>
+</div>
+<!-- Calendar Interface -->
+<div class="bg-surface-container-lowest rounded-xl p-stack-md md:p-stack-lg shadow-[0_20px_40px_rgba(126,182,255,0.1)]">
+<!-- Calendar Header -->
+<div class="flex justify-between items-center mb-stack-lg">
+<button onclick="prevMonth()" class="p-2 hover:bg-primary-container/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">chevron_left</span>
+</button>
+<h3 id="calendar-title" class="font-headline-md text-headline-md text-on-surface">September 2024</h3>
+<button onclick="nextMonth()" class="p-2 hover:bg-primary-container/20 rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">chevron_right</span>
+</button>
+</div>
+<!-- Days of Week -->
+<div class="calendar-grid mb-stack-sm">
+<div class="text-center font-label-sm text-label-sm text-secondary uppercase py-2">Su</div>
+<div class="text-center font-label-sm text-label-sm text-secondary uppercase py-2">Mo</div>
+<div class="text-center font-label-sm text-label-sm text-secondary uppercase py-2">Tu</div>
+<div class="text-center font-label-sm text-label-sm text-secondary uppercase py-2">We</div>
+<div class="text-center font-label-sm text-label-sm text-secondary uppercase py-2">Th</div>
+<div class="text-center font-label-sm text-label-sm text-secondary uppercase py-2">Fr</div>
+<div class="text-center font-label-sm text-label-sm text-secondary uppercase py-2">Sa</div>
+</div>
+<!-- Calendar Days -->
+<div id="calendar-days" class="calendar-grid gap-y-1">
+<!-- Dynamic Days injected here -->
+</div>
+</div>
+<!-- Duration Summary Card -->
+<div class="mt-stack-lg flex flex-col md:flex-row items-center justify-between p-stack-md bg-secondary-container/50 border border-secondary-container rounded-xl">
+<div class="flex items-center gap-4 mb-4 md:mb-0">
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">event_repeat</span>
+</div>
+<div>
+<p class="font-label-sm text-label-sm text-on-secondary-container uppercase">Selected Duration</p>
+<p id="duration-nights" class="font-headline-md text-headline-md text-on-secondary-container">Choose dates</p>
+</div>
+</div>
+<div class="text-right flex flex-col items-center md:items-end">
+<span id="duration-range-label" class="font-body-md text-body-md text-on-surface-variant">Please pick a range</span>
+<span id="duration-vibe-sub" class="font-label-md text-label-md text-primary">Perfect for a mid-week escape</span>
+</div>
+</div>
+</section>
+
+<!-- STEP 4: Review and Generate -->
+<section id="step-4" class="step-container hidden transition-all duration-300">
+<div class="mb-8">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg mb-stack-sm text-on-surface">Your Custom Trip</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Review your criteria before we generate your curated boutique itinerary.</p>
+</div>
+
+<!-- Summary Card -->
+<div class="bg-white/70 backdrop-blur-md rounded-3xl p-8 border border-white/60 shadow-[0_20px_40px_rgba(126,182,255,0.08)] flex flex-col gap-6">
+    <div class="flex items-start justify-between border-b border-surface-variant/30 pb-6">
+        <div>
+            <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-1">Destination</span>
+            <h3 id="summary-destination" class="font-headline-lg text-primary">Kyoto, Japan</h3>
+        </div>
+        <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined">explore</span>
+        </div>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-b border-surface-variant/30 pb-6">
+        <div>
+            <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-1">Travel Dates</span>
+            <p id="summary-dates" class="font-body-lg text-on-surface font-semibold">Sep 12 — Sep 18, 2024</p>
+        </div>
+        <div>
+            <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-1">Duration</span>
+            <p id="summary-duration" class="font-body-lg text-on-surface font-semibold">7 Days, 6 Nights</p>
+        </div>
+    </div>
+
+    <div>
+        <span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-2">Selected Vibes</span>
+        <div id="summary-vibes" class="flex flex-wrap gap-2">
+            <!-- Vibe tags -->
+        </div>
+    </div>
+</div>
+
+<!-- Action Trigger -->
+<div id="action-trigger-area" class="mt-8 text-center">
+    <button onclick="generateItinerary()" class="w-full py-5 rounded-full font-label-md text-label-md text-white bg-gradient-to-r from-primary to-primary-container shadow-xl shadow-primary/20 hover:opacity-90 active:scale-98 transition-all duration-300 flex items-center justify-center gap-3">
+        <span class="material-symbols-outlined">auto_awesome</span>
+        <span>Generate Boutique Itinerary</span>
+    </button>
+</div>
+
+<!-- Loading State -->
+<div id="planning-loader" class="hidden mt-8 p-12 bg-white/40 rounded-3xl border border-surface-variant/20 flex flex-col items-center justify-center text-center gap-4">
+    <div class="relative w-16 h-16">
+        <div class="absolute inset-0 rounded-full border-4 border-primary/20 animate-pulse"></div>
+        <div class="absolute inset-0 rounded-full border-4 border-t-primary animate-spin"></div>
+    </div>
+    <h4 class="font-headline-md text-on-surface mt-4">AI Travel Designer</h4>
+    <p id="loading-status-text" class="text-on-surface-variant text-body-md animate-fade">Mapping standard routes...</p>
+</div>
+
+<!-- Generated Itinerary Area -->
+<div id="itinerary-result" class="hidden mt-8 space-y-6">
+    <div class="bg-primary/5 rounded-3xl p-6 border border-primary/20 flex items-center gap-4">
+        <span class="material-symbols-outlined text-primary text-4xl">verified</span>
+        <div>
+            <h4 class="font-semibold text-primary">Your Premium Experience Is Ready</h4>
+            <p class="text-sm text-on-surface-variant">We have optimized local transit, weather windows, and culinary hotspots.</p>
+        </div>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="bg-white rounded-3xl p-6 shadow-md border border-surface-variant/20">
+        <span class="px-3 py-1 bg-primary-fixed text-primary font-semibold text-xs rounded-full uppercase tracking-wider">Day 1: Arrival & Ambient Discovery</span>
+        <h4 id="itinerary-day-1-title" class="font-headline-md text-on-surface mt-3 mb-2">Settle & Evening Stroll</h4>
+        <p class="text-on-surface-variant text-body-md">Arrive at your boutique boutique hotel, experience a curated check-in, and embark on a peaceful sunset walking tour to experience regional architecture and authentic dining.</p>
+    </div>
+    <!-- Day 2 -->
+    <div class="bg-white rounded-3xl p-6 shadow-md border border-surface-variant/20">
+        <span class="px-3 py-1 bg-primary-fixed text-primary font-semibold text-xs rounded-full uppercase tracking-wider">Day 2: The Core Experience</span>
+        <h4 id="itinerary-day-2-title" class="font-headline-md text-on-surface mt-3 mb-2">Scenic Route & Culinary Tasting</h4>
+        <p class="text-on-surface-variant text-body-md">Begin early to beat the crowds at top viewpoints. Break for lunch at a secret farm-to-table café, then finish with a curated local tasting experience.</p>
+    </div>
+    <!-- Day 3 -->
+    <div class="bg-white rounded-3xl p-6 shadow-md border border-surface-variant/20">
+        <span class="px-3 py-1 bg-primary-fixed text-primary font-semibold text-xs rounded-full uppercase tracking-wider">Day 3: Hidden Gems</span>
+        <h4 id="itinerary-day-3-title" class="font-headline-md text-on-surface mt-3 mb-2">Off the Beaten Path & Relax</h4>
+        <p class="text-on-surface-variant text-body-md">Spend the day exploring nearby villages or quiet nature walks away from general tourism. End your evening with premium wellness treatments.</p>
+    </div>
+</div>
+</section>
+</main>
+
+<!-- Bottom Navigation / Action Bar -->
+<div class="fixed bottom-0 w-full z-40 bg-white/70 backdrop-blur-xl shadow-[0_-10px_30px_rgba(126,182,255,0.1)] safe-bottom">
+<div class="max-w-4xl mx-auto px-container-padding-mobile md:px-container-padding-desktop h-24 flex items-center justify-between">
+<button onclick="location.href='index.html'" class="px-6 py-3 rounded-full font-label-md text-label-md text-secondary border border-outline-variant hover:bg-surface-variant transition-colors active:scale-95 duration-200">
+                Cancel
+            </button>
+<button id="next-step-btn" onclick="nextStep()" class="px-10 py-3 rounded-full font-label-md text-label-md text-white bg-gradient-to-r from-primary to-primary-container shadow-lg shadow-primary/20 hover:opacity-90 transition-all active:scale-95 duration-200 flex items-center gap-2">
+                <span id="next-btn-text">Next Step</span>
+                <span class="material-symbols-outlined text-[18px]" id="next-btn-icon">chevron_right</span>
+</button>
+</div>
+</div>
+
+<!-- Decorative Atmosphere -->
+<div class="fixed top-[-10%] right-[-5%] w-[400px] h-[400px] bg-primary/5 blur-[120px] rounded-full -z-10 pointer-events-none"></div>
+<div class="fixed bottom-[10%] left-[-10%] w-[350px] h-[350px] bg-secondary/5 blur-[100px] rounded-full -z-10 pointer-events-none"></div>
+
+<script>
+    let currentStep = 1;
+    let tripData = {
+        destination: '',
+        vibes: [],
+        startDate: null,
+        endDate: null
+    };
+
+    // Calendar state
+    let calYear = 2024;
+    let calMonth = 8; // September (0-indexed)
+
+    // Initial load
+    document.addEventListener('DOMContentLoaded', () => {
+        // Set up search trigger
+        const input = document.getElementById('destination-input');
+        input.addEventListener('keyup', (e) => {
+            tripData.destination = e.target.value;
+            toggleNextButtonState();
+        });
+        
+        renderCalendar();
+        toggleNextButtonState();
+    });
+
+    function toggleNextButtonState() {
+        const nextBtn = document.getElementById('next-step-btn');
+        if (currentStep === 1) {
+            if (tripData.destination.trim().length > 2) {
+                nextBtn.removeAttribute('disabled');
+                nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                nextBtn.setAttribute('disabled', 'true');
+                nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        } else if (currentStep === 2) {
+            if (tripData.vibes.length > 0) {
+                nextBtn.removeAttribute('disabled');
+                nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                nextBtn.setAttribute('disabled', 'true');
+                nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        } else if (currentStep === 3) {
+            if (tripData.startDate && tripData.endDate) {
+                nextBtn.removeAttribute('disabled');
+                nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            } else {
+                nextBtn.setAttribute('disabled', 'true');
+                nextBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            }
+        }
+    }
+
+    function selectDestination(name) {
+        document.getElementById('destination-input').value = name;
+        tripData.destination = name;
+        
+        // Highlight active chip
+        document.querySelectorAll('.destination-chip').forEach(chip => {
+            if (chip.textContent.includes(name.split(',')[0])) {
+                chip.classList.add('border-primary', 'bg-primary-container/10');
+            } else {
+                chip.classList.remove('border-primary', 'bg-primary-container/10');
+            }
+        });
+        
+        toggleNextButtonState();
+        setTimeout(() => {
+            nextStep();
+        }, 300);
+    }
+
+    function toggleVibe(btn, name) {
+        if (tripData.vibes.includes(name)) {
+            tripData.vibes = tripData.vibes.filter(v => v !== name);
+            btn.classList.remove('border-primary', 'bg-primary-container/10');
+        } else {
+            tripData.vibes.push(name);
+            btn.classList.add('border-primary', 'bg-primary-container/10');
+        }
+        toggleNextButtonState();
+    }
+
+    function goBack() {
+        if (currentStep > 1) {
+            document.getElementById(`step-${currentStep}`).classList.add('hidden');
+            currentStep--;
+            document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+            updateStepperUI();
+        } else {
+            location.href = 'index.html';
+        }
+    }
+
+    function nextStep() {
+        if (currentStep === 1 && tripData.destination.trim().length <= 2) return;
+        if (currentStep === 2 && tripData.vibes.length === 0) return;
+        if (currentStep === 3 && (!tripData.startDate || !tripData.endDate)) return;
+
+        if (currentStep < 4) {
+            document.getElementById(`step-${currentStep}`).classList.add('hidden');
+            currentStep++;
+            document.getElementById(`step-${currentStep}`).classList.remove('hidden');
+            updateStepperUI();
+            
+            if (currentStep === 4) {
+                populateSummary();
+            }
+        }
+    }
+
+    function updateStepperUI() {
+        // Update indicators
+        for (let i = 1; i <= 4; i++) {
+            const ind = document.getElementById(`step-indicator-${i}`);
+            if (i <= currentStep) {
+                ind.className = 'h-1.5 flex-grow bg-primary rounded-full transition-all duration-300';
+            } else {
+                ind.className = 'h-1.5 flex-grow bg-surface-container-highest rounded-full transition-all duration-300';
+            }
+        }
+        
+        // Update text badge
+        document.getElementById('step-badge').textContent = `STEP ${currentStep} OF 4`;
+        
+        // Update buttons
+        const nextBtnText = document.getElementById('next-btn-text');
+        const nextBtnIcon = document.getElementById('next-btn-icon');
+        const nextBtn = document.getElementById('next-step-btn');
+        
+        if (currentStep === 4) {
+            // Hide next button on summary page
+            nextBtn.classList.add('hidden');
+        } else {
+            nextBtn.classList.remove('hidden');
+            nextBtnText.textContent = 'Next Step';
+            nextBtnIcon.textContent = 'chevron_right';
+        }
+        
+        toggleNextButtonState();
+    }
+
+    // Calendar Picker System
+    const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    
+    function prevMonth() {
+        if (calMonth === 0) {
+            calMonth = 11;
+            calYear--;
+        } else {
+            calMonth--;
+        }
+        renderCalendar();
+    }
+
+    function nextMonth() {
+        if (calMonth === 11) {
+            calMonth = 0;
+            calYear++;
+        } else {
+            calMonth++;
+        }
+        renderCalendar();
+    }
+
+    function renderCalendar() {
+        document.getElementById('calendar-title').textContent = `${monthNames[calMonth]} ${calYear}`;
+        
+        const firstDayIndex = new Date(calYear, calMonth, 1).getDay();
+        const lastDay = new Date(calYear, calMonth + 1, 0).getDate();
+        const prevLastDay = new Date(calYear, calMonth, 0).getDate();
+        
+        const daysContainer = document.getElementById('calendar-days');
+        daysContainer.innerHTML = '';
+        
+        // Greyed out previous month padding
+        for (let x = firstDayIndex; x > 0; x--) {
+            const dayDiv = document.createElement('div');
+            dayDiv.className = 'calendar-day text-surface-variant font-body-md text-body-md';
+            dayDiv.textContent = prevLastDay - x + 1;
+            daysContainer.appendChild(dayDiv);
+        }
+        
+        // Current Month Active Days
+        for (let i = 1; i <= lastDay; i++) {
+            const dayDiv = document.createElement('div');
+            const currentDate = new Date(calYear, calMonth, i);
+            
+            dayDiv.className = 'calendar-day font-body-md text-body-md text-on-surface hover:bg-primary-container/20';
+            dayDiv.textContent = i;
+            
+            // Apply Selection Classes
+            if (tripData.startDate && isSameDate(currentDate, tripData.startDate)) {
+                dayDiv.className = 'calendar-day bg-primary text-white rounded-full font-body-md text-body-md shadow-lg shadow-primary/30';
+            } else if (tripData.endDate && isSameDate(currentDate, tripData.endDate)) {
+                dayDiv.className = 'calendar-day bg-primary text-white rounded-full font-body-md text-body-md shadow-lg shadow-primary/30';
+            } else if (tripData.startDate && tripData.endDate && currentDate > tripData.startDate && currentDate < tripData.endDate) {
+                dayDiv.className = 'calendar-day in-range font-body-md text-body-md text-primary font-semibold';
+            }
+            
+            dayDiv.addEventListener('click', () => handleDateClick(currentDate));
+            daysContainer.appendChild(dayDiv);
+        }
+        
+        updateCalendarSummaryLabel();
+    }
+
+    function isSameDate(d1, d2) {
+        return d1.getFullYear() === d2.getFullYear() &&
+               d1.getMonth() === d2.getMonth() &&
+               d1.getDate() === d2.getDate();
+    }
+
+    function handleDateClick(date) {
+        if (!tripData.startDate || (tripData.startDate && tripData.endDate)) {
+            // First click or reset click
+            tripData.startDate = date;
+            tripData.endDate = null;
+        } else if (date < tripData.startDate) {
+            // Clicked a date before start date -> make it new start date
+            tripData.startDate = date;
+        } else {
+            // Selected end date
+            tripData.endDate = date;
+        }
+        renderCalendar();
+        toggleNextButtonState();
+    }
+
+    function updateCalendarSummaryLabel() {
+        const durationNights = document.getElementById('duration-nights');
+        const rangeLabel = document.getElementById('duration-range-label');
+        
+        if (tripData.startDate && tripData.endDate) {
+            const diffTime = Math.abs(tripData.endDate - tripData.startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+            const diffNights = diffDays - 1;
+            
+            durationNights.textContent = `${diffDays} Days, ${diffNights} Nights`;
+            rangeLabel.textContent = `${formatDateString(tripData.startDate)} — ${formatDateString(tripData.endDate)}`;
+        } else if (tripData.startDate) {
+            durationNights.textContent = 'Selecting end date...';
+            rangeLabel.textContent = `Start: ${formatDateString(tripData.startDate)}`;
+        } else {
+            durationNights.textContent = 'Choose Dates';
+            rangeLabel.textContent = 'Please pick a range';
+        }
+    }
+
+    function formatDateString(date) {
+        const options = { month: 'short', day: 'numeric', year: 'numeric' };
+        return date.toLocaleDateString('en-US', options);
+    }
+
+    function populateSummary() {
+        document.getElementById('summary-destination').textContent = tripData.destination;
+        
+        if (tripData.startDate && tripData.endDate) {
+            document.getElementById('summary-dates').textContent = `${formatDateString(tripData.startDate)} — ${formatDateString(tripData.endDate)}`;
+            
+            const diffTime = Math.abs(tripData.endDate - tripData.startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) + 1;
+            const diffNights = diffDays - 1;
+            document.getElementById('summary-duration').textContent = `${diffDays} Days, ${diffNights} Nights`;
+        }
+        
+        const vibeContainer = document.getElementById('summary-vibes');
+        vibeContainer.innerHTML = '';
+        tripData.vibes.forEach(vibe => {
+            const tag = document.createElement('span');
+            tag.className = 'px-4 py-2 bg-primary/10 text-primary font-semibold text-sm rounded-full';
+            tag.textContent = vibe;
+            vibeContainer.appendChild(tag);
+        });
+    }
+
+    // Itinerary generation loading animation simulation
+    function generateItinerary() {
+        const triggerArea = document.getElementById('action-trigger-area');
+        const loader = document.getElementById('planning-loader');
+        const result = document.getElementById('itinerary-result');
+        const statusText = document.getElementById('loading-status-text');
+
+        triggerArea.classList.add('hidden');
+        loader.classList.remove('hidden');
+        result.classList.add('hidden');
+
+        const states = [
+            'Mapping boutique boutique hotels...',
+            'Curating off-peak weather routes...',
+            'Gathering local gastronomic hotspots...',
+            'Refining cultural transit details...',
+            'Finalizing your custom experience...'
+        ];
+
+        let index = 0;
+        const interval = setInterval(() => {
+            if (index < states.length) {
+                statusText.textContent = states[index];
+                index++;
+            } else {
+                clearInterval(interval);
+                loader.classList.add('hidden');
+                
+                // Customize title depending on vibes chosen
+                const mainVibe = tripData.vibes[0] || 'Adventure';
+                document.getElementById('itinerary-day-1-title').textContent = `Check-in & Curated ${mainVibe} Evening`;
+                document.getElementById('itinerary-day-2-title').textContent = `${tripData.destination.split(',')[0]} Scenic Discovery & Local Tasting`;
+                document.getElementById('itinerary-day-3-title').textContent = `Immersive Cultural Strolls & Wellness Retreat`;
+                
+                result.classList.remove('hidden');
+                
+                // Save newly generated trip to localStorage (so it's added to user profile!)
+                saveTripToProfile();
+            }
+        }, 1000);
+    }
+
+    function saveTripToProfile() {
+        const savedTrips = JSON.parse(localStorage.getItem('traveler_custom_trips') || '[]');
+        const newTrip = {
+            id: 'trip_' + Date.now(),
+            destination: tripData.destination,
+            dates: `${formatDateString(tripData.startDate)} — ${formatDateString(tripData.endDate)}`,
+            vibes: tripData.vibes,
+            imageUrl: getTripImage(tripData.destination)
+        };
+        savedTrips.unshift(newTrip);
+        localStorage.setItem('traveler_custom_trips', JSON.stringify(savedTrips));
+    }
+
+    function getTripImage(dest) {
+        if (dest.includes('Amalfi')) return 'https://lh3.googleusercontent.com/aida-public/AB6AXuAxpbJclmPoCeBs8V4Rm7OoH-szaZvCsHDX4RAuigUAvGqX-D1S9gPlyQmXNoByZtab4bSaitk4tpmKn9P9VA8R7c6ZXA7AfPdSv42qqhw9uPWQMg1zWA3G8_zsFqwNRNCb_0yYh-8cWrhRqBsbaofNFR3VfiJ9K7S4dd_toDvYn49w1QFH-uthRQ7RiLTzbXpmUoA9t3Tm4ADOr0ah8G5-_0D3i18N7L4iqLNeQZPkeOqi1OPtoCfXDlLqIEq3m9cBY4XpBwg_Wtk';
+        if (dest.includes('Alps')) return 'https://lh3.googleusercontent.com/aida-public/AB6AXuAqJok9QtqsgYDw94vLOgt2qIj7lqRIiMRY3VoqUTkpiRMhopo80VaetZDG5w7VRD-ow33zkPxEJkURRlujFGRsbpj29zAqANiK0XJWrCvKVBi89GPij4O5D9xW-EcoVzu1mcwrp_lPCJtI5laPj5s3fs5iN0IL52UoP-I11exc9eclilr3tH8TiplW4f4Q4W8jm1cIPHejjbgWiPEI9T24LUqO58QrYsZ8bQf3cxnFQfFrBdBVVB683Fnrmx04R1D1nAJoDOQMrTY';
+        return 'https://lh3.googleusercontent.com/aida-public/AB6AXuDIy9Pl0T4DM7TrvnlL5Wd3g_l4NyFs6KdHkJcZlY1H54sEWW4k-TFCsdvdCY3qEz69PWeqRuNNparLFmIRLmuMaW8sfIsCSt7YC7W3cgintsBGiVG_jWRE8wTHuqRyftpZh8TpeI_wEVvFGhI4Zk_rOCIU-UAZGr0rekvxdfk0znEz0ku1FAiJMT8mZFv-YdYDw-apix_O9s7lW2ZT2K9faJxMgPokUZFVZlZtjxKJSVJX_qlho421EJHjG2uX2Mam6N2Pmg4Qp74';
+    }
+</script>
+</body>
+</html>

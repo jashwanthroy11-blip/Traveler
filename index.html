@@ -1,0 +1,367 @@
+<!-- Home Explore - Airy Adventure -->
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+    <title>Airy Adventure - Explore Weightless Travels</title>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ebe1d3",
+                    "surface-bright": "#faf9f6",
+                    "tertiary-fixed": "#d3e5f1",
+                    "secondary-fixed-dim": "#cec5b8",
+                    "on-surface-variant": "#424750",
+                    "on-surface": "#1a1c1a",
+                    "surface": "#faf9f6",
+                    "on-primary": "#ffffff",
+                    "secondary-container": "#ebe1d3",
+                    "inverse-on-surface": "#f2f1ee",
+                    "tertiary-fixed-dim": "#b7c9d5",
+                    "primary-container": "#7eb6ff",
+                    "surface-variant": "#e3e2e0",
+                    "secondary": "#645e53",
+                    "primary": "#1c60a3",
+                    "outline-variant": "#c2c7d2",
+                    "on-secondary-container": "#6a6459",
+                    "on-secondary-fixed-variant": "#4c463c",
+                    "on-error-container": "#93000a",
+                    "outline": "#727782",
+                    "tertiary": "#50616b",
+                    "on-tertiary-container": "#374851",
+                    "on-primary-fixed-variant": "#004882",
+                    "on-primary-container": "#004680",
+                    "on-background": "#1a1c1a",
+                    "inverse-surface": "#2f312f",
+                    "primary-fixed": "#d3e3ff",
+                    "surface-container-highest": "#e3e2e0",
+                    "primary-fixed-dim": "#a3c9ff",
+                    "on-secondary-fixed": "#1f1b13",
+                    "surface-tint": "#1c60a3",
+                    "on-secondary": "#ffffff",
+                    "surface-container-low": "#f4f3f1",
+                    "on-primary-fixed": "#001c39",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary": "#ffffff",
+                    "surface-container": "#efeeeb",
+                    "on-tertiary-fixed-variant": "#384953",
+                    "on-tertiary-fixed": "#0c1e26",
+                    "surface-container-high": "#e9e8e5",
+                    "background": "#faf9f6",
+                    "tertiary-container": "#a4b6c1",
+                    "surface-dim": "#dbdad7",
+                    "error": "#ba1a1a",
+                    "on-error": "#ffffff",
+                    "inverse-primary": "#a3c9ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-padding-mobile": "24px",
+                    "stack-lg": "32px",
+                    "section-gap": "48px",
+                    "stack-md": "16px",
+                    "unit": "8px",
+                    "stack-sm": "8px",
+                    "container-padding-desktop": "64px",
+                    "gutter": "16px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Be Vietnam Pro"],
+                    "label-md": ["Be Vietnam Pro"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Be Vietnam Pro"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-lg": ["Be Vietnam Pro"],
+                    "label-sm": ["Be Vietnam Pro"],
+                    "headline-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "headline-xl": ["40px", {"lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+    <link href="assets/css/global.css" rel="stylesheet"/>
+</head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl dark:bg-surface-container-lowest/70 shadow-[0_20px_40px_rgba(126,182,255,0.15)]">
+<div class="flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop py-4 max-w-full">
+<a href="index.html" class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="explore">explore</span>
+<span class="font-headline-md text-headline-md tracking-wider text-primary dark:text-primary-fixed-dim">AIRY</span>
+</a>
+<div class="hidden md:flex items-center gap-stack-lg">
+<nav class="flex gap-stack-md">
+<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary px-3 py-1" href="index.html">Explore</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-primary-container/20 transition-colors duration-300 px-3 py-1 rounded-full" href="profile.html#saved-trips">Saved</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-primary-container/20 transition-colors duration-300 px-3 py-1 rounded-full" href="create-trip.html">Trips</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:bg-primary-container/20 transition-colors duration-300 px-3 py-1 rounded-full" href="profile.html">Profile</a>
+</nav>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 active:scale-95 transition-transform" data-icon="settings" onclick="location.href='settings.html'">settings</span>
+</div>
+<div class="md:hidden flex items-center gap-2">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 active:scale-95 transition-transform" data-icon="settings" onclick="location.href='settings.html'">settings</span>
+</div>
+</div>
+</header>
+
+<!-- Hero / Discover Banner Section -->
+<main class="pt-24 pb-32 px-container-padding-mobile md:px-container-padding-desktop max-w-[1280px] mx-auto">
+<section class="mb-section-gap relative rounded-3xl overflow-hidden shadow-[0_20px_40px_rgba(126,182,255,0.15)] bg-gradient-to-r from-primary to-primary-container p-8 md:p-12 text-white">
+    <div class="max-w-2xl">
+        <span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-widest block mb-4">Airy Adventure Exclusive</span>
+        <h1 class="font-headline-xl text-headline-xl text-white mb-6">Discover the beauty of weightless travel</h1>
+        <p class="font-body-lg text-body-lg text-primary-fixed mb-8">Plan your next luxury escape with our boutique curation system. Explore off-peak paths, serene getaways, and immersive local culture.</p>
+        <button onclick="location.href='create-trip.html'" class="px-8 py-4 bg-white text-primary rounded-full font-label-md text-label-md hover:bg-surface-container transition-colors active:scale-95 transition-all duration-200 flex items-center gap-3 shadow-lg">
+            <span class="material-symbols-outlined">auto_awesome</span>
+            <span>Create Custom Journey</span>
+        </button>
+    </div>
+    <div class="absolute right-0 bottom-0 opacity-20 hidden lg:block text-[240px] leading-none pointer-events-none translate-y-8 select-none">
+        explore
+    </div>
+</section>
+
+<!-- Filter Tabs System -->
+<section id="experiences" class="mb-stack-lg">
+    <div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+        <div>
+            <h2 class="font-headline-lg text-on-surface">Curated Hotspots</h2>
+            <p class="text-on-surface-variant text-body-md">Hand-selected travel bundles for the modern global explorer.</p>
+        </div>
+        <!-- Vibe selection filters -->
+        <div class="flex gap-2 overflow-x-auto pb-2 scrollbar-none w-full md:w-auto">
+            <button onclick="filterAdventures('all')" class="filter-tab-btn px-6 py-2.5 bg-primary text-white rounded-full font-label-md text-label-md transition-all">All Paths</button>
+            <button onclick="filterAdventures('beach')" class="filter-tab-btn px-6 py-2.5 bg-white border border-surface-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:border-primary transition-all">Beach Escape</button>
+            <button onclick="filterAdventures('hiking')" class="filter-tab-btn px-6 py-2.5 bg-white border border-surface-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:border-primary transition-all">Mountain Path</button>
+            <button onclick="filterAdventures('city')" class="filter-tab-btn px-6 py-2.5 bg-white border border-surface-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:border-primary transition-all">City Explorer</button>
+        </div>
+    </div>
+
+    <!-- Adventure Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+        <!-- Card 1 -->
+        <div class="adventure-card group bg-white rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(126,182,255,0.1)] hover:shadow-[0_20px_40px_rgba(126,182,255,0.15)] transition-all duration-300" data-category="beach">
+            <div class="h-48 overflow-hidden relative">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxpbJclmPoCeBs8V4Rm7OoH-szaZvCsHDX4RAuigUAvGqX-D1S9gPlyQmXNoByZtab4bSaitk4tpmKn9P9VA8R7c6ZXA7AfPdSv42qqhw9uPWQMg1zWA3G8_zsFqwNRNCb_0yYh-8cWrhRqBsbaofNFR3VfiJ9K7S4dd_toDvYn49w1QFH-uthRQ7RiLTzbXpmUoA9t3Tm4ADOr0ah8G5-_0D3i18N7L4iqLNeQZPkeOqi1OPtoCfXDlLqIEq3m9cBY4XpBwg_Wtk"/>
+                <button class="favorite-btn absolute top-4 right-4 bg-white/70 backdrop-blur-md p-2 rounded-full text-primary hover:scale-110 transition-transform duration-200" data-trip-id="amalfi">
+                    <span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                </button>
+                <div class="absolute bottom-4 left-4">
+                    <span class="px-3 py-1 bg-white/80 backdrop-blur-md rounded-full font-label-sm text-label-sm text-on-surface">Beach</span>
+                </div>
+            </div>
+            <div class="p-stack-md">
+                <h3 class="font-headline-md text-[20px] mb-1">Amalfi Coast Drift</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm">A peaceful harbor stroll through cliffside villages.</p>
+                <div class="flex items-center justify-between text-primary font-label-md text-label-md mt-4 border-t border-surface-variant/20 pt-4">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+                        <span>Italy</span>
+                    </div>
+                    <a href="profile.html#saved-trips" class="font-semibold text-primary flex items-center hover:underline">View Details <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="adventure-card group bg-white rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(126,182,255,0.1)] hover:shadow-[0_20px_40px_rgba(126,182,255,0.15)] transition-all duration-300" data-category="hiking">
+            <div class="h-48 overflow-hidden relative">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqJok9QtqsgYDw94vLOgt2qIj7lqRIiMRY3VoqUTkpiRMhopo80VaetZDG5w7VRD-ow33zkPxEJkURRlujFGRsbpj29zAqANiK0XJWrCvKVBi89GPij4O5D9xW-EcoVzu1mcwrp_lPCJtI5laPj5s3fs5iN0IL52UoP-I11exc9eclilr3tH8TiplW4f4Q4W8jm1cIPHejjbgWiPEI9T24LUqO58QrYsZ8bQf3cxnFQfFrBdBVVB683Fnrmx04R1D1nAJoDOQMrTY"/>
+                <button class="favorite-btn absolute top-4 right-4 bg-white/70 backdrop-blur-md p-2 rounded-full text-primary hover:scale-110 transition-transform duration-200" data-trip-id="alps">
+                    <span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                </button>
+                <div class="absolute bottom-4 left-4">
+                    <span class="px-3 py-1 bg-white/80 backdrop-blur-md rounded-full font-label-sm text-label-sm text-on-surface">Hiking</span>
+                </div>
+            </div>
+            <div class="p-stack-md">
+                <h3 class="font-headline-md text-[20px] mb-1">Swiss Alps Retreat</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm">Soar over stunning ice valleys and serene mountains.</p>
+                <div class="flex items-center justify-between text-primary font-label-md text-label-md mt-4 border-t border-surface-variant/20 pt-4">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+                        <span>Switzerland</span>
+                    </div>
+                    <a href="profile.html#saved-trips" class="font-semibold text-primary flex items-center hover:underline">View Details <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="adventure-card group bg-white rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(126,182,255,0.1)] hover:shadow-[0_20px_40px_rgba(126,182,255,0.15)] transition-all duration-300" data-category="city">
+            <div class="h-48 overflow-hidden relative">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIy9Pl0T4DM7TrvnlL5Wd3g_l4NyFs6KdHkJcZlY1H54sEWW4k-TFCsdvdCY3qEz69PWeqRuNNparLFmIRLmuMaW8sfIsCSt7YC7W3cgintsBGiVG_jWRE8wTHuqRyftpZh8TpeI_wEVvFGhI4Zk_rOCIU-UAZGr0rekvxdfk0znEz0ku1FAiJMT8mZFv-YdYDw-apix_O9s7lW2ZT2K9faJxMgPokUZFVZlZtjxKJSVJX_qlho421EJHjG2uX2Mam6N2Pmg4Qp74"/>
+                <button class="favorite-btn absolute top-4 right-4 bg-white/70 backdrop-blur-md p-2 rounded-full text-primary hover:scale-110 transition-transform duration-200" data-trip-id="kyoto">
+                    <span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+                </button>
+                <div class="absolute bottom-4 left-4">
+                    <span class="px-3 py-1 bg-white/80 backdrop-blur-md rounded-full font-label-sm text-label-sm text-on-surface">City</span>
+                </div>
+            </div>
+            <div class="p-stack-md">
+                <h3 class="font-headline-md text-[20px] mb-1">Kyoto Zen Tour</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm">Experience serene stone paths and deep, historic pagodas.</p>
+                <div class="flex items-center justify-between text-primary font-label-md text-label-md mt-4 border-t border-surface-variant/20 pt-4">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
+                        <span>Japan</span>
+                    </div>
+                    <a href="profile.html#saved-trips" class="font-semibold text-primary flex items-center hover:underline">View Details <span class="material-symbols-outlined text-sm">chevron_right</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Bento Section -->
+<section class="mt-section-gap">
+    <div class="bg-white/40 backdrop-blur-sm rounded-3xl p-8 border border-surface-variant/30 flex flex-col md:flex-row items-center justify-between gap-6 shadow-[0_20px_40px_rgba(126,182,255,0.05)]">
+        <div>
+            <h3 class="font-headline-md text-headline-md text-on-surface">Design Your Custom Itinerary</h3>
+            <p class="text-on-surface-variant text-body-md mt-2 max-w-xl">Take our premium builder to configure precise dates, local styles, and customized routes in under a minute.</p>
+        </div>
+        <button onclick="location.href='create-trip.html'" class="px-8 py-3.5 bg-secondary-container text-on-secondary-container rounded-full font-label-md text-label-md hover:bg-secondary-fixed transition-colors active:scale-95 transition-all duration-200 whitespace-nowrap">
+            Launch Planner
+        </button>
+    </div>
+</section>
+</main>
+
+<!-- BottomNavBar Shell (Mobile Only) -->
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-white/70 backdrop-blur-xl dark:bg-surface-container-lowest/70 shadow-[0_-10px_30px_rgba(126,182,255,0.1)] flex md:hidden justify-around items-center h-16 pb-safe">
+<a class="flex flex-col items-center justify-center bg-primary-container/30 text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform" href="index.html">
+<span class="material-symbols-outlined" data-icon="travel_explore">travel_explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform" href="profile.html#saved-trips">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+<span class="font-label-sm text-label-sm">Saved</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform" href="create-trip.html">
+<span class="material-symbols-outlined" data-icon="luggage">luggage</span>
+<span class="font-label-sm text-label-sm">Trips</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform" href="profile.html">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+
+<!-- Footer Shell (Desktop Only) -->
+<footer class="hidden md:flex flex-col md:flex-row justify-between items-center px-container-padding-desktop py-stack-lg bg-surface-container-low border-t border-surface-variant w-full">
+<div class="flex flex-col items-start gap-2">
+<span class="font-headline-md text-headline-md text-primary">AIRY</span>
+<p class="font-body-md text-body-md text-secondary">© 2024 Airy Adventure. All rights reserved.</p>
+</div>
+<nav class="flex gap-stack-md">
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-all underline" href="index.html">Destinations</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-all underline" href="index.html#experiences">Experiences</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-all underline" href="create-trip.html">Travel Guides</a>
+<a class="font-body-md text-body-md text-secondary hover:text-primary transition-all underline" href="settings.html">Privacy Policy</a>
+</nav>
+</footer>
+
+<script>
+    // Synchronize favorite like status in localStorage
+    const favoriteStates = JSON.parse(localStorage.getItem('traveler_likes') || '{}');
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initial setup for buttons
+        document.querySelectorAll('.favorite-btn').forEach(btn => {
+            const id = btn.getAttribute('data-trip-id');
+            if (favoriteStates[id] === undefined) {
+                favoriteStates[id] = true;
+            }
+            updateHeartUI(btn, favoriteStates[id]);
+        });
+        localStorage.setItem('traveler_likes', JSON.stringify(favoriteStates));
+    });
+
+    function updateHeartUI(btn, isLiked) {
+        const icon = btn.querySelector('.material-symbols-outlined');
+        if (isLiked) {
+            icon.style.fontVariationSettings = "'FILL' 1";
+            icon.classList.add('text-primary');
+        } else {
+            icon.style.fontVariationSettings = "'FILL' 0";
+            icon.classList.remove('text-primary');
+        }
+    }
+
+    // Hearts toggling on homepage
+    document.querySelectorAll('.favorite-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            const id = this.getAttribute('data-trip-id');
+            favoriteStates[id] = !favoriteStates[id];
+            localStorage.setItem('traveler_likes', JSON.stringify(favoriteStates));
+            
+            updateHeartUI(this, favoriteStates[id]);
+            
+            // Pulse animation
+            this.style.transform = 'scale(1.25)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 200);
+        });
+    });
+
+    // Simple Tab Filter System
+    function filterAdventures(category) {
+        // Update tab styling
+        const tabs = document.querySelectorAll('.filter-tab-btn');
+        tabs.forEach(tab => {
+            const text = tab.textContent.toLowerCase();
+            if ((category === 'all' && text.includes('all')) || text.includes(category)) {
+                tab.className = 'filter-tab-btn px-6 py-2.5 bg-primary text-white rounded-full font-label-md text-label-md transition-all';
+            } else {
+                tab.className = 'filter-tab-btn px-6 py-2.5 bg-white border border-surface-variant text-on-surface-variant rounded-full font-label-md text-label-md hover:border-primary transition-all';
+            }
+        });
+
+        // Show/hide cards
+        const cards = document.querySelectorAll('.adventure-card');
+        cards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-category') === category) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Parallax effect for header on scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('shadow-md');
+        }
+    });
+</script>
+</body>
+</html>
