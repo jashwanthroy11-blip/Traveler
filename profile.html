@@ -2,6 +2,19 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
 <head>
+    <script>
+        // Immediate Theme Initialization to avoid flash
+        (function() {
+            const theme = localStorage.getItem('traveler_theme') || 'light';
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+            } else {
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
     <title>Profile - Airy Adventure</title>
@@ -106,7 +119,7 @@
 </head>
 <body class="bg-background text-on-surface">
 <!-- TopAppBar Shell -->
-<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl dark:bg-surface-container-lowest/70 shadow-[0_20px_40px_rgba(126,182,255,0.15)]">
+<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl dark:bg-[#0c0f12]/75 border-b border-transparent dark:border-white/5 shadow-[0_20px_40px_rgba(126,182,255,0.15)]">
 <div class="flex justify-between items-center px-container-padding-mobile md:px-container-padding-desktop py-4 max-w-full">
 <a href="index.html" class="flex items-center gap-2">
 <span class="material-symbols-outlined text-primary" data-icon="explore">explore</span>
@@ -114,15 +127,21 @@
 </a>
 <div class="hidden md:flex items-center gap-stack-lg">
 <nav class="flex gap-stack-md">
-<a class="font-label-md text-label-md text-on-surface-variant hover:bg-primary-container/20 transition-colors duration-300 px-3 py-1 rounded-full" href="index.html">Explore</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:bg-primary-container/20 transition-colors duration-300 px-3 py-1 rounded-full" href="#saved-trips">Saved</a>
-<a class="font-label-md text-label-md text-on-surface-variant hover:bg-primary-container/20 transition-colors duration-300 px-3 py-1 rounded-full" href="create-trip.html">Trips</a>
-<a class="font-label-md text-label-md text-primary font-bold border-b-2 border-primary px-3 py-1" href="profile.html">Profile</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-slate-300 hover:bg-primary-container/20 dark:hover:bg-white/10 transition-colors duration-300 px-3 py-1 rounded-full" href="index.html">Explore</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-slate-300 hover:bg-primary-container/20 dark:hover:bg-white/10 transition-colors duration-300 px-3 py-1 rounded-full" href="#saved-trips">Saved</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-slate-300 hover:bg-primary-container/20 dark:hover:bg-white/10 transition-colors duration-300 px-3 py-1 rounded-full" href="create-trip.html">Trips</a>
+<a class="font-label-md text-label-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim px-3 py-1" href="profile.html">Profile</a>
 </nav>
-<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 active:scale-95 transition-transform" data-icon="settings" onclick="location.href='settings.html'">settings</span>
+<button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-primary-container/20 dark:hover:bg-white/10 active:scale-95 transition-all duration-200 text-primary dark:text-primary-fixed-dim" aria-label="Toggle theme">
+<span class="material-symbols-outlined" id="theme-toggle-icon">dark_mode</span>
+</button>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim cursor-pointer hover:scale-110 active:scale-95 transition-transform" data-icon="settings" onclick="location.href='settings.html'">settings</span>
 </div>
 <div class="md:hidden flex items-center gap-2">
-<span class="material-symbols-outlined text-primary cursor-pointer hover:scale-110 active:scale-95 transition-transform" data-icon="settings" onclick="location.href='settings.html'">settings</span>
+<button id="theme-toggle-mobile" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-primary-container/20 dark:hover:bg-white/10 active:scale-95 transition-all duration-200 text-primary dark:text-primary-fixed-dim" aria-label="Toggle theme">
+<span class="material-symbols-outlined" id="theme-toggle-icon-mobile">dark_mode</span>
+</button>
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim cursor-pointer hover:scale-110 active:scale-95 transition-transform" data-icon="settings" onclick="location.href='settings.html'">settings</span>
 </div>
 </div>
 </header>
@@ -146,20 +165,20 @@
 </section>
 <!-- Stats Bar -->
 <section class="mb-section-gap">
-<div class="glass-panel rounded-3xl p-6 flex justify-around items-center shadow-[0_20px_40px_rgba(126,182,255,0.1)]">
+<div class="glass-panel dark:bg-[#161a1f]/70 border border-transparent dark:border-white/5 rounded-3xl p-6 flex justify-around items-center shadow-[0_20px_40px_rgba(126,182,255,0.1)]">
 <div class="flex flex-col items-center">
-<span id="saved-trips-count" class="font-headline-md text-headline-md text-primary">3</span>
-<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Saved Trips</span>
+<span id="saved-trips-count" class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">3</span>
+<span class="font-label-sm text-label-sm text-secondary dark:text-slate-300 uppercase tracking-wider">Saved Trips</span>
 </div>
-<div class="w-[1px] h-10 bg-outline-variant"></div>
+<div class="w-[1px] h-10 bg-outline-variant dark:bg-white/10"></div>
 <div class="flex flex-col items-center">
-<span class="font-headline-md text-headline-md text-primary">24</span>
-<span class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Places Visited</span>
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">24</span>
+<span class="font-label-sm text-label-sm text-secondary dark:text-slate-300 uppercase tracking-wider">Places Visited</span>
 </div>
-<div class="w-[1px] h-10 bg-outline-variant"></div>
+<div class="w-[1px] h-10 bg-outline-variant dark:bg-white/10"></div>
 <div class="flex flex-col items-center">
-<span id="distance-value" class="font-headline-md text-headline-md text-primary">12,450</span>
-<span id="distance-unit" class="font-label-sm text-label-sm text-secondary uppercase tracking-wider">Kilometers</span>
+<span id="distance-value" class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">12,450</span>
+<span id="distance-unit" class="font-label-sm text-label-sm text-secondary dark:text-slate-300 uppercase tracking-wider">Kilometers</span>
 </div>
 </div>
 </section>
@@ -174,19 +193,19 @@
 <!-- Trip Grid -->
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
 <!-- Trip Card 1 -->
-<div class="group bg-white rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(126,182,255,0.1)] hover:shadow-[0_20px_40px_rgba(126,182,255,0.15)] transition-all duration-300">
+<div class="group bg-white dark:bg-[#161a1f] border border-transparent dark:border-white/5 rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(126,182,255,0.1)] hover:shadow-[0_20px_40px_rgba(126,182,255,0.15)] transition-all duration-300">
 <div class="h-48 overflow-hidden relative">
 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxpbJclmPoCeBs8V4Rm7OoH-szaZvCsHDX4RAuigUAvGqX-D1S9gPlyQmXNoByZtab4bSaitk4tpmKn9P9VA8R7c6ZXA7AfPdSv42qqhw9uPWQMg1zWA3G8_zsFqwNRNCb_0yYh-8cWrhRqBsbaofNFR3VfiJ9K7S4dd_toDvYn49w1QFH-uthRQ7RiLTzbXpmUoA9t3Tm4ADOr0ah8G5-_0D3i18N7L4iqLNeQZPkeOqi1OPtoCfXDlLqIEq3m9cBY4XpBwg_Wtk"/>
-<button class="favorite-btn absolute top-4 right-4 bg-white/70 backdrop-blur-md p-2 rounded-full text-primary hover:scale-110 transition-transform duration-200" data-trip-id="amalfi">
+<button class="favorite-btn absolute top-4 right-4 bg-white/70 dark:bg-[#161a1f]/75 backdrop-blur-md p-2 rounded-full text-primary dark:text-primary-fixed-dim hover:scale-110 transition-transform duration-200" data-trip-id="amalfi">
 <span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
 </button>
 <div class="absolute bottom-4 left-4">
-<span class="px-3 py-1 bg-white/80 backdrop-blur-md rounded-full font-label-sm text-label-sm text-on-surface">Beach</span>
+<span class="px-3 py-1 bg-white/80 dark:bg-[#161a1f]/80 dark:text-slate-200 backdrop-blur-md rounded-full font-label-sm text-label-sm text-on-surface dark:text-slate-200">Beach</span>
 </div>
 </div>
 <div class="p-stack-md">
-<h3 class="font-headline-md text-[20px] mb-1">Amalfi Coast Drift</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm">Sept 12 - Sept 20, 2024</p>
+<h3 class="font-headline-md text-[20px] text-on-surface dark:text-slate-200 mb-1">Amalfi Coast Drift</h3>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-slate-400 mb-stack-sm">Sept 12 - Sept 20, 2024</p>
 <div class="flex items-center gap-2 text-primary font-label-md text-label-md">
 <span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
                             Italy
@@ -194,19 +213,19 @@
 </div>
 </div>
 <!-- Trip Card 2 -->
-<div class="group bg-white rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(126,182,255,0.1)] hover:shadow-[0_20px_40px_rgba(126,182,255,0.15)] transition-all duration-300">
+<div class="group bg-white dark:bg-[#161a1f] border border-transparent dark:border-white/5 rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(126,182,255,0.1)] hover:shadow-[0_20px_40px_rgba(126,182,255,0.15)] transition-all duration-300">
 <div class="h-48 overflow-hidden relative">
 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqJok9QtqsgYDw94vLOgt2qIj7lqRIiMRY3VoqUTkpiRMhopo80VaetZDG5w7VRD-ow33zkPxEJkURRlujFGRsbpj29zAqANiK0XJWrCvKVBi89GPij4O5D9xW-EcoVzu1mcwrp_lPCJtI5laPj5s3fs5iN0IL52UoP-I11exc9eclilr3tH8TiplW4f4Q4W8jm1cIPHejjbgWiPEI9T24LUqO58QrYsZ8bQf3cxnFQfFrBdBVVB683Fnrmx04R1D1nAJoDOQMrTY"/>
-<button class="favorite-btn absolute top-4 right-4 bg-white/70 backdrop-blur-md p-2 rounded-full text-primary hover:scale-110 transition-transform duration-200" data-trip-id="alps">
+<button class="favorite-btn absolute top-4 right-4 bg-white/70 dark:bg-[#161a1f]/75 backdrop-blur-md p-2 rounded-full text-primary dark:text-primary-fixed-dim hover:scale-110 transition-transform duration-200" data-trip-id="alps">
 <span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
 </button>
 <div class="absolute bottom-4 left-4">
-<span class="px-3 py-1 bg-white/80 backdrop-blur-md rounded-full font-label-sm text-label-sm text-on-surface">Hiking</span>
+<span class="px-3 py-1 bg-white/80 dark:bg-[#161a1f]/80 dark:text-slate-200 backdrop-blur-md rounded-full font-label-sm text-label-sm text-on-surface dark:text-slate-200">Hiking</span>
 </div>
 </div>
 <div class="p-stack-md">
-<h3 class="font-headline-md text-[20px] mb-1">Swiss Alps Retreat</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm">Oct 05 - Oct 12, 2024</p>
+<h3 class="font-headline-md text-[20px] text-on-surface dark:text-slate-200 mb-1">Swiss Alps Retreat</h3>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-slate-400 mb-stack-sm">Oct 05 - Oct 12, 2024</p>
 <div class="flex items-center gap-2 text-primary font-label-md text-label-md">
 <span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
                             Switzerland
@@ -214,19 +233,19 @@
 </div>
 </div>
 <!-- Trip Card 3 -->
-<div class="group bg-white rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(126,182,255,0.1)] hover:shadow-[0_20px_40px_rgba(126,182,255,0.15)] transition-all duration-300">
+<div class="group bg-white dark:bg-[#161a1f] border border-transparent dark:border-white/5 rounded-3xl overflow-hidden shadow-[0_10px_30px_rgba(126,182,255,0.1)] hover:shadow-[0_20px_40px_rgba(126,182,255,0.15)] transition-all duration-300">
 <div class="h-48 overflow-hidden relative">
 <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIy9Pl0T4DM7TrvnlL5Wd3g_l4NyFs6KdHkJcZlY1H54sEWW4k-TFCsdvdCY3qEz69PWeqRuNNparLFmIRLmuMaW8sfIsCSt7YC7W3cgintsBGiVG_jWRE8wTHuqRyftpZh8TpeI_wEVvFGhI4Zk_rOCIU-UAZGr0rekvxdfk0znEz0ku1FAiJMT8mZFv-YdYDw-apix_O9s7lW2ZT2K9faJxMgPokUZFVZlZtjxKJSVJX_qlho421EJHjG2uX2Mam6N2Pmg4Qp74"/>
-<button class="favorite-btn absolute top-4 right-4 bg-white/70 backdrop-blur-md p-2 rounded-full text-primary hover:scale-110 transition-transform duration-200" data-trip-id="kyoto">
+<button class="favorite-btn absolute top-4 right-4 bg-white/70 dark:bg-[#161a1f]/75 backdrop-blur-md p-2 rounded-full text-primary dark:text-primary-fixed-dim hover:scale-110 transition-transform duration-200" data-trip-id="kyoto">
 <span class="material-symbols-outlined" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
 </button>
 <div class="absolute bottom-4 left-4">
-<span class="px-3 py-1 bg-white/80 backdrop-blur-md rounded-full font-label-sm text-label-sm text-on-surface">City</span>
+<span class="px-3 py-1 bg-white/80 dark:bg-[#161a1f]/80 dark:text-slate-200 backdrop-blur-md rounded-full font-label-sm text-label-sm text-on-surface dark:text-slate-200">City</span>
 </div>
 </div>
 <div class="p-stack-md">
-<h3 class="font-headline-md text-[20px] mb-1">Kyoto Zen Tour</h3>
-<p class="font-body-md text-body-md text-on-surface-variant mb-stack-sm">Nov 20 - Nov 28, 2024</p>
+<h3 class="font-headline-md text-[20px] text-on-surface dark:text-slate-200 mb-1">Kyoto Zen Tour</h3>
+<p class="font-body-md text-body-md text-on-surface-variant dark:text-slate-400 mb-stack-sm">Nov 20 - Nov 28, 2024</p>
 <div class="flex items-center gap-2 text-primary font-label-md text-label-md">
 <span class="material-symbols-outlined text-[18px]" data-icon="location_on">location_on</span>
                             Japan
@@ -237,35 +256,35 @@
 </section>
 </main>
 <!-- BottomNavBar Shell (Mobile Only) -->
-<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-white/70 backdrop-blur-xl dark:bg-surface-container-lowest/70 shadow-[0_-10px_30px_rgba(126,182,255,0.1)] flex md:hidden justify-around items-center h-16 pb-safe">
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform" href="index.html">
+<nav class="fixed bottom-0 w-full z-50 rounded-t-xl bg-white/70 backdrop-blur-xl dark:bg-[#0c0f12]/80 border-t border-transparent dark:border-white/10 shadow-[0_-10px_30px_rgba(126,182,255,0.1)] flex md:hidden justify-around items-center h-16 pb-safe">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-slate-400 hover:text-primary transition-colors active:scale-90 transition-transform" href="index.html">
 <span class="material-symbols-outlined" data-icon="travel_explore">travel_explore</span>
 <span class="font-label-sm text-label-sm">Explore</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform" href="#saved-trips">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-slate-400 hover:text-primary transition-colors active:scale-90 transition-transform" href="#saved-trips">
 <span class="material-symbols-outlined" data-icon="favorite">favorite</span>
 <span class="font-label-sm text-label-sm">Saved</span>
 </a>
-<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:text-primary transition-colors active:scale-90 transition-transform" href="create-trip.html">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-slate-400 hover:text-primary transition-colors active:scale-90 transition-transform" href="create-trip.html">
 <span class="material-symbols-outlined" data-icon="luggage">luggage</span>
 <span class="font-label-sm text-label-sm">Trips</span>
 </a>
-<a class="flex flex-col items-center justify-center bg-primary-container/30 text-on-primary-container rounded-full px-4 py-1 active:scale-90 transition-transform" href="profile.html">
+<a class="flex flex-col items-center justify-center bg-primary-container/30 text-on-primary-container dark:text-slate-200 rounded-full px-4 py-1 active:scale-90 transition-transform" href="profile.html">
 <span class="material-symbols-outlined" data-icon="person">person</span>
 <span class="font-label-sm text-label-sm">Profile</span>
 </a>
 </nav>
 <!-- Footer Shell (Desktop Only) -->
-<footer class="hidden md:flex flex-col md:flex-row justify-between items-center px-container-padding-desktop py-stack-lg bg-surface-container-low border-t border-surface-variant w-full">
+<footer class="hidden md:flex flex-col md:flex-row justify-between items-center px-container-padding-desktop py-stack-lg bg-surface-container-low dark:bg-[#080b0d] border-t border-surface-variant dark:border-white/5 w-full">
 <div class="flex flex-col items-start gap-2">
-<span class="font-headline-md text-headline-md text-primary">AIRY</span>
-<p class="font-body-md text-body-md text-secondary">© 2024 Airy Adventure. All rights reserved.</p>
+<span class="font-headline-md text-headline-md text-primary dark:text-primary-fixed-dim">AIRY</span>
+<p class="font-body-md text-body-md text-secondary dark:text-slate-400">© 2024 Airy Adventure. All rights reserved.</p>
 </div>
 <nav class="flex gap-stack-md">
-<a class="font-body-md text-body-md text-secondary hover:text-primary transition-all underline" href="index.html">Destinations</a>
-<a class="font-body-md text-body-md text-secondary hover:text-primary transition-all underline" href="index.html#experiences">Experiences</a>
-<a class="font-body-md text-body-md text-secondary hover:text-primary transition-all underline" href="create-trip.html">Travel Guides</a>
-<a class="font-body-md text-body-md text-secondary hover:text-primary transition-all underline" href="settings.html">Privacy Policy</a>
+<a class="font-body-md text-body-md text-secondary dark:text-slate-400 hover:text-primary transition-all underline" href="index.html">Destinations</a>
+<a class="font-body-md text-body-md text-secondary dark:text-slate-400 hover:text-primary transition-all underline" href="index.html#experiences">Experiences</a>
+<a class="font-body-md text-body-md text-secondary dark:text-slate-400 hover:text-primary transition-all underline" href="create-trip.html">Travel Guides</a>
+<a class="font-body-md text-body-md text-secondary dark:text-slate-400 hover:text-primary transition-all underline" href="settings.html">Privacy Policy</a>
 </nav>
 </footer>
 <script>
@@ -342,15 +361,56 @@
             });
         });
 
-        // Parallax effect for header on scroll
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 10) {
-                header.classList.add('shadow-md');
-            } else {
-                header.classList.remove('shadow-md');
+    // Parallax effect for header on scroll
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 10) {
+            header.classList.add('shadow-md');
+        } else {
+            header.classList.remove('shadow-md');
+        }
+    });
+
+    // Theme Toggle Handler
+    const toggles = [document.getElementById('theme-toggle'), document.getElementById('theme-toggle-mobile')];
+    const toggleIcons = [document.getElementById('theme-toggle-icon'), document.getElementById('theme-toggle-icon-mobile')];
+
+    function updateThemeUI() {
+        const isDark = document.documentElement.classList.contains('dark');
+        toggleIcons.forEach(icon => {
+            if (icon) {
+                icon.textContent = isDark ? 'light_mode' : 'dark_mode';
             }
         });
+    }
+
+    toggles.forEach(toggle => {
+        if (toggle) {
+            toggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.contains('dark');
+                if (isDark) {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    localStorage.setItem('traveler_theme', 'light');
+                } else {
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('traveler_theme', 'dark');
+                }
+                updateThemeUI();
+                
+                // Spin scale transition
+                const icon = toggle.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.transform = 'scale(1.2) rotate(45deg)';
+                    setTimeout(() => { icon.style.transform = 'none'; }, 200);
+                }
+            });
+        }
+    });
+
+    // Initial theme UI trigger
+    updateThemeUI();
     </script>
 </body>
 </html>

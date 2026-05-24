@@ -11,6 +11,13 @@
   --glass-blur: 12px;
 }
 
+.dark {
+  --bg-color: #0c0f12;
+  --on-surface: #f1f5f9;
+  --secondary-color: #a4b6c1;
+  --glass-bg: rgba(18, 20, 22, 0.75);
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--on-surface);

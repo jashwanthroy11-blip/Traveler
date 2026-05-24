@@ -2,6 +2,19 @@
 <!DOCTYPE html>
 <html class="light" lang="en">
 <head>
+    <script>
+        // Immediate Theme Initialization to avoid flash
+        (function() {
+            const theme = localStorage.getItem('traveler_theme') || 'light';
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+            } else {
+                document.documentElement.classList.add('light');
+                document.documentElement.classList.remove('dark');
+            }
+        })();
+    </script>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Settings - Airy Adventure</title>
@@ -111,21 +124,26 @@
 </head>
 <body class="font-body-md text-on-surface antialiased min-h-screen">
 <!-- Header (Suppressed Global Nav for Task-Focused Page) -->
-<header class="glass-header sticky top-0 z-50 px-container-padding-mobile md:px-container-padding-desktop py-4 flex items-center justify-between">
+<header class="glass-header sticky top-0 z-50 px-container-padding-mobile md:px-container-padding-desktop py-4 flex items-center justify-between dark:bg-[#0c0f12]/75 border-b border-transparent dark:border-white/5">
 <div class="flex items-center gap-stack-md">
-<button aria-label="Go back" onclick="location.href='profile.html'" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-primary-container/20 active:scale-95 transition-all duration-200">
-<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+<button aria-label="Go back" onclick="location.href='profile.html'" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-primary-container/20 dark:hover:bg-white/10 active:scale-95 transition-all duration-200">
+<span class="material-symbols-outlined text-primary dark:text-primary-fixed-dim" data-icon="arrow_back">arrow_back</span>
 </button>
-<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary">Settings</h1>
+<h1 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-primary dark:text-primary-fixed-dim">Settings</h1>
 </div>
+<div class="flex items-center gap-2">
+<button id="theme-toggle" class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-primary-container/20 dark:hover:bg-white/10 active:scale-95 transition-all duration-200 text-primary dark:text-primary-fixed-dim" aria-label="Toggle theme">
+<span class="material-symbols-outlined" id="theme-toggle-icon">dark_mode</span>
+</button>
 <div class="hidden md:block">
-<a href="index.html" class="font-headline-md text-headline-md tracking-wider text-primary opacity-50 hover:opacity-100 transition-opacity">AIRY</a>
+<a href="index.html" class="font-headline-md text-headline-md tracking-wider text-primary dark:text-primary-fixed-dim opacity-50 hover:opacity-100 transition-opacity">AIRY</a>
+</div>
 </div>
 </header>
 <main class="max-w-[1280px] mx-auto px-container-padding-mobile md:px-container-padding-desktop py-stack-lg">
 <!-- Profile Bento Preview (Aesthetic Detail) -->
 <section class="mb-section-gap">
-<div class="bg-surface-container-lowest ambient-shadow rounded-xl p-6 flex items-center gap-stack-md border border-white/40">
+<div class="bg-surface-container-lowest dark:bg-[#161a1f] border border-transparent dark:border-white/5 ambient-shadow rounded-xl p-6 flex items-center gap-stack-md border border-white/40">
 <div class="relative">
 <img alt="User Profile" class="w-16 h-16 rounded-full object-cover ring-4 ring-primary-fixed" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHOXc0C1TZiodOLT0T50H3IIx6V3WWYxBfKFcBgjIF7zQR8DGmoKeFTYqGz-7S7FBo5eX_H2yQ5EET5SCHm2uHJroLxzmiTfffllrIEshyA89-YjmvSZSAwIYZwRdSU7NgEcSPuGnlwO4hvTg2zZMkOWDCPQPpcgJkfV1HP2Du2J0YYa6KwhInkSrnuEGjauHc7mjIoACKCwR1l_wBjoYaPzK2WaEtjg-fcleSomYlznyIZ1qzdUyHxWc-syipSy1qdNJwhtexfEk"/>
 <div class="absolute -bottom-1 -right-1 bg-primary w-6 h-6 rounded-full flex items-center justify-center border-2 border-white cursor-pointer hover:scale-105 active:scale-95 transition-transform" onclick="location.href='profile.html'">
@@ -133,88 +151,88 @@
 </div>
 </div>
 <div>
-<h2 class="font-headline-md text-headline-md text-on-surface">Alex River</h2>
-<p class="font-label-md text-label-md text-on-surface-variant">Global Explorer • Gold Tier</p>
+<h2 class="font-headline-md text-headline-md text-on-surface dark:text-slate-100">Alex River</h2>
+<p class="font-label-md text-label-md text-on-surface-variant dark:text-slate-400">Global Explorer • Gold Tier</p>
 </div>
 </div>
 </section>
 <!-- Settings List -->
 <section class="space-y-stack-md">
 <!-- Account Section -->
-<div class="bg-white/40 rounded-xl overflow-hidden backdrop-blur-sm border border-surface-variant/30">
-<div class="px-6 py-4 border-b border-surface-variant/20">
-<h3 class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">General</h3>
+<div class="bg-white/40 dark:bg-[#161a1f]/40 rounded-xl overflow-hidden backdrop-blur-sm border border-surface-variant/30 dark:border-white/5">
+<div class="px-6 py-4 border-b border-surface-variant/20 dark:border-white/5">
+<h3 class="font-label-sm text-label-sm uppercase tracking-widest text-secondary dark:text-slate-300">General</h3>
 </div>
 <!-- Account Row -->
-<button onclick="location.href='profile.html'" class="w-full flex items-center justify-between px-6 py-5 hover:bg-primary-container/10 active:bg-primary-container/20 transition-colors group">
+<button onclick="location.href='profile.html'" class="w-full flex items-center justify-between px-6 py-5 hover:bg-primary-container/10 dark:hover:bg-white/5 active:bg-primary-container/20 transition-colors group">
 <div class="flex items-center gap-stack-md">
 <div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed-variant group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined" data-icon="person">person</span>
 </div>
-<span class="font-body-lg text-body-lg text-on-surface">Account</span>
+<span class="font-body-lg text-body-lg text-on-surface dark:text-slate-200">Account</span>
 </div>
-<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+<span class="material-symbols-outlined text-outline dark:text-slate-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
 </button>
 <!-- Notifications Row -->
-<button class="w-full flex items-center justify-between px-6 py-5 hover:bg-primary-container/10 active:bg-primary-container/20 transition-colors group border-t border-surface-variant/10">
+<button class="w-full flex items-center justify-between px-6 py-5 hover:bg-primary-container/10 dark:hover:bg-white/5 active:bg-primary-container/20 transition-colors group border-t border-surface-variant/10 dark:border-white/5">
 <div class="flex items-center gap-stack-md">
 <div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
 </div>
-<span class="font-body-lg text-body-lg text-on-surface">Notifications</span>
+<span class="font-body-lg text-body-lg text-on-surface dark:text-slate-200">Notifications</span>
 </div>
-<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+<span class="material-symbols-outlined text-outline dark:text-slate-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
 </button>
 <!-- Privacy Row -->
-<button class="w-full flex items-center justify-between px-6 py-5 hover:bg-primary-container/10 active:bg-primary-container/20 transition-colors group border-t border-surface-variant/10">
+<button class="w-full flex items-center justify-between px-6 py-5 hover:bg-primary-container/10 dark:hover:bg-white/5 active:bg-primary-container/20 transition-colors group border-t border-surface-variant/10 dark:border-white/5">
 <div class="flex items-center gap-stack-md">
 <div class="w-10 h-10 rounded-full bg-tertiary-fixed-dim flex items-center justify-center text-on-tertiary-fixed-variant group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined" data-icon="lock">lock</span>
 </div>
-<span class="font-body-lg text-body-lg text-on-surface">Privacy</span>
+<span class="font-body-lg text-body-lg text-on-surface dark:text-slate-200">Privacy</span>
 </div>
-<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+<span class="material-symbols-outlined text-outline dark:text-slate-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
 </button>
 </div>
 <!-- Preferences Section -->
-<div class="bg-white/40 rounded-xl overflow-hidden backdrop-blur-sm border border-surface-variant/30">
-<div class="px-6 py-4 border-b border-surface-variant/20">
-<h3 class="font-label-sm text-label-sm uppercase tracking-widest text-secondary">Preferences</h3>
+<div class="bg-white/40 dark:bg-[#161a1f]/40 rounded-xl overflow-hidden backdrop-blur-sm border border-surface-variant/30 dark:border-white/5">
+<div class="px-6 py-4 border-b border-surface-variant/20 dark:border-white/5">
+<h3 class="font-label-sm text-label-sm uppercase tracking-widest text-secondary dark:text-slate-300">Preferences</h3>
 </div>
 <!-- Units Row -->
-<button id="units-btn" class="w-full flex items-center justify-between px-6 py-5 hover:bg-primary-container/10 active:bg-primary-container/20 transition-colors group">
+<button id="units-btn" class="w-full flex items-center justify-between px-6 py-5 hover:bg-primary-container/10 dark:hover:bg-white/5 active:bg-primary-container/20 transition-colors group">
 <div class="flex items-center justify-between w-full">
 <div class="flex items-center gap-stack-md">
 <div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined" data-icon="straighten">straighten</span>
 </div>
 <div class="text-left">
-<span class="font-body-lg text-body-lg text-on-surface block">Units</span>
-<span id="units-label" class="font-label-sm text-label-sm text-on-surface-variant">Kilometers (km)</span>
+<span class="font-body-lg text-body-lg text-on-surface dark:text-slate-200 block">Units</span>
+<span id="units-label" class="font-label-sm text-label-sm text-on-surface-variant dark:text-slate-400">Kilometers (km)</span>
 </div>
 </div>
-<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+<span class="material-symbols-outlined text-outline dark:text-slate-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
 </div>
 </button>
 <!-- Support Row -->
-<button class="w-full flex items-center justify-between px-6 py-5 hover:bg-primary-container/10 active:bg-primary-container/20 transition-colors group border-t border-surface-variant/10">
+<button class="w-full flex items-center justify-between px-6 py-5 hover:bg-primary-container/10 dark:hover:bg-white/5 active:bg-primary-container/20 transition-colors group border-t border-surface-variant/10 dark:border-white/5">
 <div class="flex items-center gap-stack-md">
 <div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center text-on-surface-variant group-hover:scale-110 transition-transform">
 <span class="material-symbols-outlined" data-icon="help">help</span>
 </div>
-<span class="font-body-lg text-body-lg text-on-surface">Support</span>
+<span class="font-body-lg text-body-lg text-on-surface dark:text-slate-200">Support</span>
 </div>
-<span class="material-symbols-outlined text-outline group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+<span class="material-symbols-outlined text-outline dark:text-slate-400 group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
 </button>
 </div>
 </section>
 <!-- Logout Area -->
 <section class="mt-section-gap pb-stack-lg">
-<button id="logout-btn" class="w-full py-5 px-6 rounded-xl flex items-center justify-center gap-stack-sm bg-secondary-container/30 text-secondary hover:bg-secondary-container/50 active:scale-[0.98] transition-all duration-200 border border-secondary-fixed">
+<button id="logout-btn" class="w-full py-5 px-6 rounded-xl flex items-center justify-center gap-stack-sm bg-secondary-container/30 dark:bg-white/5 dark:border-white/10 dark:text-slate-300 text-secondary hover:bg-secondary-container/50 dark:hover:bg-white/10 active:scale-[0.98] transition-all duration-200 border border-secondary-fixed">
 <span class="material-symbols-outlined" data-icon="logout">logout</span>
 <span class="font-body-lg text-body-lg font-semibold">Logout</span>
 </button>
-<p class="text-center mt-6 font-label-sm text-label-sm text-outline">App Version 2.4.0 (Build 42)</p>
+<p class="text-center mt-6 font-label-sm text-label-sm text-outline dark:text-slate-500">App Version 2.4.0 (Build 42)</p>
 </section>
 </main>
 <!-- Background Atmospheric Effect -->
@@ -262,10 +280,47 @@
                 }, 1500);
             });
         }
+
+        // Theme Toggle Handler
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeToggleIcon = document.getElementById('theme-toggle-icon');
+
+        function updateThemeUI() {
+            const isDark = document.documentElement.classList.contains('dark');
+            if (themeToggleIcon) {
+                themeToggleIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+            }
+        }
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                const isDark = document.documentElement.classList.contains('dark');
+                if (isDark) {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    localStorage.setItem('traveler_theme', 'light');
+                } else {
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('traveler_theme', 'dark');
+                }
+                updateThemeUI();
+                
+                // Spin scale transition
+                const icon = themeToggle.querySelector('.material-symbols-outlined');
+                if (icon) {
+                    icon.style.transform = 'scale(1.2) rotate(45deg)';
+                    setTimeout(() => { icon.style.transform = 'none'; }, 200);
+                }
+            });
+        }
+
+        // Initial theme trigger
+        updateThemeUI();
     </script>
 <!-- Footer Segment -->
-<footer class="w-full py-stack-md text-center border-t border-surface-variant/20 px-container-padding-mobile">
-<p class="font-label-sm text-label-sm text-secondary opacity-60">© 2024 Airy Adventure. All rights reserved.</p>
+<footer class="w-full py-stack-md text-center border-t border-surface-variant/20 dark:border-white/5 px-container-padding-mobile">
+<p class="font-label-sm text-label-sm text-secondary dark:text-slate-400 opacity-60">© 2024 Airy Adventure. All rights reserved.</p>
 </footer>
 </body>
 </html>
